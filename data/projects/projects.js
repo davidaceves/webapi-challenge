@@ -72,27 +72,37 @@ router.delete('/:id', async (req, res) => {
 
         if (project) {
             res.status(200).json({
-                message: "The project has been deleted"
+                message: 'The project has been deleted'
             })
         } else {
             res.status(404).json({
-                message: "The project could not be found"
+                message: 'The project could not be found'
             })
         }
     } catch(error) {
         res.status(500).json({
-            message: "Error deleting the project"
+            message: 'Error deleting the project'
         })
     }
 });
 
-// router." "('/', async (req, res) => {
-//     try {
+router.get('/:id/actions', async (req, res) => {
+    try {
+        const actions = await Projects.getProjectActions(req.params.id)
 
-//     } catch(error) {
-
-//     }
-// });
+        if (actions) {
+            res.status(200).json(actions)
+        } else {
+            res.status(404).json({
+                message: 'Actions not found'
+            })
+        }
+    } catch(error) {
+        res.status(500).json({
+            message: 'Error retrieving actions'
+        })
+    }
+});
 
 
 
