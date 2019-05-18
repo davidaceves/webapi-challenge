@@ -24,13 +24,16 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// router." "('/', async (req, res) => {
-//     try {
-
-//     } catch(error) {
-
-//     }
-// });
+router.post('/', async (req, res) => {
+    try {
+        const project = await Projects.insert(req.body);
+        res.status(201).json(project);
+    } catch(error) {
+        res.status(500).json({
+            message: "Error adding the project"
+        })
+    }
+});
 
 // router." "('/', async (req, res) => {
 //     try {
