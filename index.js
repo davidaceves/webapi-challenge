@@ -13,7 +13,7 @@ I need this code, just don't know where, perhaps should make some middleware, do
 Go code!
 */
 
-const server = require ('./server.js');
+const server = require('./server.js');
 
 server.listen(4000, () => {
     console.log('\n* Server Running on http://localhost:4000 *\n');
