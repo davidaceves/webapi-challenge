@@ -5,6 +5,18 @@ const router = express.Router();
 const Projects = require('../helpers/projectModel.js');
 const Actions = require('../helpers/actionModel.js');
 
+router.get('/', async (req, res) => {
+    try {
+        const projects = await Projects.get();
+        res.status(200).json(projects);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: 'Error retrieving projects'
+        });
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try {
         const project = await Projects.get(req.params.id);
