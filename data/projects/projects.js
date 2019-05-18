@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
     } catch(error) {
         console.log(error);
         res.status(500).json({
-            message: "Error retrieving the project"
+            message: 'Error retrieving the project'
         })
     }
 });
@@ -42,18 +42,29 @@ router.post('/', async (req, res) => {
         res.status(201).json(project);
     } catch(error) {
         res.status(500).json({
-            message: "Error adding the project"
+            message: 'Error adding the project'
         })
     }
 });
 
-// router." "('/', async (req, res) => {
-//     try {
+router.put('/:id', async (req, res) => {
+    try {
+        const project = await Projects.update(req.params.id, req.body);
 
-//     } catch(error) {
-
-//     }
-// });
+        if (project) {
+            res.status(200).json(project)
+        } else {
+            res.status(500).json({
+                message: 'The project could not be found'
+            })
+        }
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({
+            message: 'Error updating project'
+        });
+    }
+});
 
 // router." "('/', async (req, res) => {
 //     try {
