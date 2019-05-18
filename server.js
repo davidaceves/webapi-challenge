@@ -10,7 +10,7 @@ server.use('/api/projects', ProjectRouter);
 server.use('/api/actions', ActionRouter)
 
 server.get('/', (req, res) => {
-    res.send(`<h1>Welcome</h1>`)
+res.send(`<h1>Welcome</h1>`)
 })
 
 module.exports = server;
